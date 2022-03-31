@@ -1,0 +1,9 @@
+<div class="container">
+    <img src="../../../assets/images/Phoenix.png" width="300">
+
+    <div *ngFor="let cinema of cinemas" class="btn-select">
+        <button class="btn btn-warning" (click)="goToAccueilCinema(cinema)">{{cinema.nom}}</button>
+    </div>
+</div>
+
+

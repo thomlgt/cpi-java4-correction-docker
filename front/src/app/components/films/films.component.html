@@ -1,0 +1,15 @@
+<div class="container select">
+    <div class="btn-group mr-3">
+        <button type="button" class="btn btn-warning">Cinéma sélectionné : {{selectedCinema.nom}}</button>
+        <div class="btn-group" ngbDropdown role="group">
+          <button class="btn btn-warning dropdown-toggle-split" ngbDropdownToggle></button>
+          <div class="dropdown-menu" ngbDropdownMenu>
+            <button ngbDropdownItem *ngFor="let cinema of cinemas" (click)="changeSelectedCinema(cinema)">{{cinema.nom}}</button>
+          </div>
+        </div>
+      </div>
+</div>
+
+<div class="container"> 
+    <app-film *ngFor="let film of films" [film]="film" class="element"></app-film>
+</div>

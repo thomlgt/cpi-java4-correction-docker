@@ -1,0 +1,15 @@
+body {
+    background-color: #292b2c;
+}
+
+.container {
+    text-align: center;
+}
+
+.btn-select {
+    margin-bottom: 10px;
+}
+
+.btn {
+    width: 200px;
+}

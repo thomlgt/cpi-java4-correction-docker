@@ -1,0 +1,13 @@
+.container {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.select {
+    margin-top: 20px;
+}
+
+.element {
+    width: 21%;
+    margin: 2%;
+}

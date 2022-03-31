@@ -1,0 +1,37 @@
+<ngb-accordion>
+    <ngb-panel id="preventchange-1" title="Liste des films">
+        <ng-template ngbPanelHeader let-opened="opened">
+            <button ngbPanelToggle class="btn">Liste des films</button>
+        </ng-template>
+        <ng-template ngbPanelContent>
+            <div *ngFor="let film of films">
+                <div class="card">
+                    <div class="card-body film-d">
+                        <div>
+                            <h5 class="card-title">{{film.nom}}</h5>
+                            <p class="card-text">Durée : {{film.duree}}</p>
+                        </div>
+                        <div>
+                            <button class="btn btn-danger">Supprimer</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </ng-template>
+    </ngb-panel>
+    <ngb-panel id="preventchange-2" title="Ajouter un film">
+        <ng-template ngbPanelHeader let-opened="opened">
+            <button ngbPanelToggle class="btn">Ajouter un film</button>
+        </ng-template>
+        <ng-template ngbPanelContent>
+            <form [formGroup]="filmForm" class="form-d" (ngSubmit)="ajouterFilm()">
+                <label for="nom"> Nom :</label>
+                <input type="text" formControlName="nom" name="nom">
+                
+                <label for="duree"> Duree :</label>
+                <input type="number" formControlName="duree" name="duree">
+                <button class="btn btn-success">Ajouter</button>
+            </form>
+        </ng-template>
+    </ngb-panel>
+</ngb-accordion>

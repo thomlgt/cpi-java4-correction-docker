@@ -1,0 +1,14 @@
+<div class="modal-header">
+    <h4 class="modal-title">Liste des séances pour : {{film.nom}}</h4>
+    <button type="button" class="close" aria-label="Close" (click)="activeModal.dismiss('Cross click')">
+        <span aria-hidden="true">&times;</span>
+    </button>
+</div>
+<div class="modal-body">
+    <div>
+        <app-seance *ngFor="let seance of seances" [seance]="seance"></app-seance>
+    </div>
+</div>
+<div class="modal-footer">
+    <button type="button" class="btn btn-outline-dark" (click)="activeModal.close('Close click')">Close</button>
+</div>

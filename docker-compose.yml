@@ -1,0 +1,51 @@
+version: '3'
+
+services:
+  # Conteneur base de données
+  db: 
+    image: mongo:5.0.5
+    container_name: db 
+    volumes: 
+      # Ce volume permettra de préserver les données si la base de données doit évoluer. Ici, on 
+      # se base uniquement sur les données dans le dump, et ce volume n'est pas forcément nécessaire
+      - ./data:/data/db
+      # On monte le dump de la base de données dans un dossier du conteneur
+      - ./dump/test:/dump/
+      # On monte le script mongorestore.sh dans le dossier /docker-entrypoint-initdb.d, qui sera 
+      # lancé automatiquement au démarrage du conteneur.
+      # Ce dossier d'entrypoint est une convention Docker, qui est au moins respectée pour tous les
+      # conteneurs de base de données
+      - ./dump/mongorestore.sh:/docker-entrypoint-initdb.d/mongorestore.sh:ro
+  # Conteneur frontend
+  front:
+    # On construit directement le frontend, depuis le dossier ./front
+    build: ./front/.
+    # On tag en même temps l'image construite
+    image: frontend:1.0.0
+    container_name: front
+    ports:
+      - 80:80
+  # Conteneur backend
+  back:
+    # On construit directement le backend, depuis le dossier ./back
+    build: ./back/.
+    # On tag en même temps l'image construite
+    image: backend:1.0.0
+    container_name: back
+    environment:
+      - PORT=8080
+      - MONGO_HOST=db
+    ports:
+      - 8080:8080
+  mongo-express:
+    container_name: mongo-express
+    image: mongo-express
+    depends_on:
+      - db
+    restart: always
+    ports:
+      - 8081:8081
+    environment:
+      - ME_CONFIG_BASICAUTH_USERNAME=${ME_CONFIG_BASICAUTH_USERNAME}
+      - ME_CONFIG_BASICAUTH_PASSWORD=${ME_CONFIG_BASICAUTH_PASSWORD}
+      - ME_CONFIG_MONGODB_SERVER=db

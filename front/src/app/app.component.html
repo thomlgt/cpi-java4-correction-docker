@@ -1,0 +1,8 @@
+<div *ngIf="!cinemaService.isCinemaSelected">
+    <router-outlet></router-outlet>
+</div>
+
+<div *ngIf="cinemaService.isCinemaSelected">
+    <app-navbar></app-navbar>
+    <router-outlet></router-outlet>
+</div>

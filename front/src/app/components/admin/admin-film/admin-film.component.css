@@ -1,0 +1,10 @@
+.film-d {
+    display: flex;
+    justify-content: space-between;
+}
+
+.form-d {
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+}

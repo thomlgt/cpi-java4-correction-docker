@@ -1,0 +1,12 @@
+.container {
+    display: flex;
+    justify-content: center;
+}
+
+.card {
+    text-align: center;
+}
+
+h4 {
+    white-space: pre-line;
+}

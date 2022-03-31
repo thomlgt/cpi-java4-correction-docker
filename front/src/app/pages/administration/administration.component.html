@@ -1,0 +1,30 @@
+<div class="container">
+    <ul ngbNav #nav="ngbNav" [(activeId)]="active" class="nav-tabs">
+        <li [ngbNavItem]="1">
+          <a ngbNavLink>Films</a>
+          <ng-template ngbNavContent>
+            <app-admin-film></app-admin-film>
+          </ng-template>
+        </li>
+        <li [ngbNavItem]="2">
+          <a ngbNavLink>Seances</a>
+          <ng-template ngbNavContent>
+            <app-admin-seance></app-admin-seance>
+          </ng-template>
+        </li>
+        <li [ngbNavItem]="3">
+          <a ngbNavLink>Cinema</a>
+          <ng-template ngbNavContent>
+            <app-admin-cinema></app-admin-cinema>
+          </ng-template>
+        </li>
+        <li [ngbNavItem]="4">
+            <a ngbNavLink>Salles</a>
+            <ng-template ngbNavContent>
+                <app-admin-salle></app-admin-salle>
+            </ng-template>
+          </li>
+      </ul>
+      
+      <div [ngbNavOutlet]="nav" class="mt-2"></div>
+</div>
